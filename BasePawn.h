@@ -19,7 +19,8 @@ public:
 
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
+	UStaticMeshComponent* TurretMesh;
 
 private:
 	// The use of the allowprivateaccess meta tag is silly, ideally you would place these in the public section instead...
@@ -28,14 +29,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
 	UStaticMeshComponent* BaseMesh;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
-	UStaticMeshComponent* TurretMesh;
+	
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
 	USceneComponent* ProjectileSpawnPoint;
-	
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 };
