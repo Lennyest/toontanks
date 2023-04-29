@@ -10,9 +10,9 @@ ABasePawn::ABasePawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 	// Sets the default root component to the capsule component.
-	CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
+	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
+	RootComponent = Capsule;
 }
 
 // Called when the game starts or when spawned
