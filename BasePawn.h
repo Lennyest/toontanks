@@ -17,13 +17,9 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float Speed = 400.0f;
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
 
 private:
 	// The use of the allowprivateaccess meta tag is silly, ideally you would place these in the public section instead...
