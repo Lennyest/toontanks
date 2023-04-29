@@ -19,7 +19,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float RotationSpeed = 25.0f;
-	
+
 protected:
 	// Called when the game starts or when spawned
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
@@ -27,7 +27,6 @@ protected:
 
 	void RotateTurret(const FVector& TargetPosition);
 	void Fire();
-	
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
 	USceneComponent* ProjectileSpawnPoint;
@@ -39,6 +38,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
 	UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY(EditDefaultsOnly, Category="Combat")
+	TSubclassOf<class AProjectile> ProjectileClass;
 	
 	FRotator LastRotation;
 };
