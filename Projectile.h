@@ -21,7 +21,6 @@ public:
 	float InitialSpeed = 1300.;
 	UPROPERTY(EditAnywhere, Category="Tank")
 	float MaxSpeed = 1300.;
-	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -35,4 +34,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category="Tank", meta=(AllowPrivateAccess="true"))
 	UProjectileMovementComponent* MovementComponent;
+
+	UPROPERTY(EditAnywhere, Category="Tank")
+	float Damage = 50.;
 };
