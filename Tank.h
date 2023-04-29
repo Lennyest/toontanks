@@ -27,17 +27,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float TurnSpeed = 50.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	float RotationSpeed = 25.0f;
-
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
 protected:
 	virtual void BeginPlay() override;
-	void RotateTurret(FVector TargetPosition);
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta=(AllowPrivateAccess="true"))

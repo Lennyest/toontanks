@@ -24,6 +24,8 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 	PlayerInputComponent->BindAxis(TEXT("RotateTurret"), this, &ATank::Rotate);
+
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
 }
 
 void ATank::Tick(float DeltaTime)
@@ -44,24 +46,6 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 
 	PlayerControllerRef = Cast<APlayerController>(GetController());
-}
-
-void ATank::RotateTurret(FVector TargetPosition)
-{
-	// Do not handle rotation if our result is 0!
-	if (TargetPosition == FVector::Zero()) return;
-	
-	const FRotator TargetRotation = (GetActorLocation() - TargetPosition).Rotation();
-	const FRotator TurretRotation = FRotator(0, TargetRotation.Yaw + 180, 0);
-
-	LastRotation = TurretRotation;
-	TurretMesh->SetWorldRotation(
-		FMath::RInterpTo(
-			TurretMesh->GetComponentRotation(),
-			TurretRotation,
-			UGameplayStatics::GetWorldDeltaSeconds(this),
-			RotationSpeed)
-		);
 }
 
 void ATank::Move(const float Value)
