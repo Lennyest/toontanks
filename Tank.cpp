@@ -32,10 +32,10 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerControllerRef)
+	if (TankPlayerController)
 	{
 		FHitResult Result;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, Result);
+		TankPlayerController->GetHitResultUnderCursor(ECC_Visibility, false, Result);
 
 		DrawDebugSphere(GetWorld(), Result.ImpactPoint, 10, 6, FColor::Red, false, 1);
 	}
@@ -45,7 +45,15 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
+}
+
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
 }
 
 void ATank::Move(const float Value)
@@ -66,10 +74,10 @@ void ATank::Turn(const float Value)
 
 void ATank::Rotate(float Value)
 {
-	if (!PlayerControllerRef) return;
+	if (!TankPlayerController) return;
 	
 	FHitResult Result;
-	PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, Result);
+	TankPlayerController->GetHitResultUnderCursor(ECC_Visibility, false, Result);
 
 	RotateTurret(Result.ImpactPoint);
 }

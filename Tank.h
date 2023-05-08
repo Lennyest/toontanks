@@ -30,6 +30,10 @@ public:
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	void HandleDestruction();
+
+	APlayerController* GetTankPlayerController() const { return TankPlayerController; };
 	
 protected:
 	virtual void BeginPlay() override;
@@ -48,5 +52,5 @@ private:
 
 	// Storing our last rotation if our result is null.
 	FRotator LastRotation;
-	APlayerController* PlayerControllerRef;
+	APlayerController* TankPlayerController;
 };

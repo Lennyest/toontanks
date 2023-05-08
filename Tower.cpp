@@ -24,6 +24,12 @@ void ATower::BeginPlay()
 	GetWorldTimerManager().SetTimer(FireTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
 }
 
+void ATower::HandleDestruction()
+{
+	Super::HandleDestruction();
+	Destroy();
+}
+
 bool ATower::CheckRange()
 {
 	if (!Tank) return false;
