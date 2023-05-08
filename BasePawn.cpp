@@ -26,6 +26,11 @@ ABasePawn::ABasePawn()
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
+void ABasePawn::HandleDestruction()
+{
+	
+}
+
 void ABasePawn::RotateTurret(const FVector &TargetPosition)
 {
 	// Do not handle rotation if our result is 0!

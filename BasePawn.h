@@ -20,6 +20,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float RotationSpeed = 25.0f;
 
+	void HandleDestruction();
+	
 protected:
 	// Called when the game starts or when spawned
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
