@@ -16,8 +16,16 @@ class TOONTANKS_API AToonTanksGamemode : public AGameModeBase
 
 public:
 	void ActorDied(AActor* ActorDied);
+	void BeginGame();
+
+	UPROPERTY(EditAnywhere)
+	int StartTimer = 3;
 protected:
 	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
 private:
 	class ATank* Tank;
+	class APawnController* Controller;
 };
