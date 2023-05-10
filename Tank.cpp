@@ -37,7 +37,7 @@ void ATank::Tick(float DeltaTime)
 		FHitResult Result;
 		TankPlayerController->GetHitResultUnderCursor(ECC_Visibility, false, Result);
 
-		DrawDebugSphere(GetWorld(), Result.ImpactPoint, 10, 6, FColor::Red, false, 1);
+		//DrawDebugSphere(GetWorld(), Result.ImpactPoint, 10, 6, FColor::Red, false, 1);
 	}
 }
 
@@ -54,6 +54,7 @@ void ATank::HandleDestruction()
 	Super::HandleDestruction();
 	SetActorHiddenInGame(true);
 	SetActorTickEnabled(false);
+	bAlive = false;
 }
 
 void ATank::Move(const float Value)

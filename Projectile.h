@@ -35,6 +35,21 @@ private:
 	UPROPERTY(VisibleAnywhere, Category="Tank", meta=(AllowPrivateAccess="true"))
 	UProjectileMovementComponent* MovementComponent;
 
+	UPROPERTY(VisibleAnywhere, Category="Tank", meta=(AllowPrivateAccess="true"))
+	UParticleSystemComponent* ParticleComponent;
+
 	UPROPERTY(EditAnywhere, Category="Tank")
 	float Damage = 50.;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	UParticleSystem* HitParticles;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShake;
 };

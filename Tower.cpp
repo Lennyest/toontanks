@@ -27,12 +27,17 @@ void ATower::BeginPlay()
 void ATower::HandleDestruction()
 {
 	Super::HandleDestruction();
+	if (ExplodeEffect)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, ExplodeEffect, GetActorLocation());
+	}
 	Destroy();
 }
 
 bool ATower::CheckRange()
 {
 	if (!Tank) return false;
+	if (!Tank->bAlive) return false;
 
 	if (const float Distance = FVector::Distance(GetActorLocation(), Tank->GetActorLocation()); Distance > MaximumDistance) return false;
 

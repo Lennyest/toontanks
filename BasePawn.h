@@ -33,6 +33,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
 	USceneComponent* ProjectileSpawnPoint;
 	
+	UPROPERTY(EditAnywhere, Category="Death")
+	UParticleSystem* ExplodeEffect;
 private:
 	// The use of the allowprivateaccess meta tag is silly, ideally you would place these in the public section instead...
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Tank", meta=(AllowPrivateAccess="true"))
@@ -45,4 +47,11 @@ private:
 	TSubclassOf<class AProjectile> ProjectileClass;
 	
 	FRotator LastRotation;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	USoundBase* DeathSound;
+	
+	UPROPERTY(EditAnywhere, Category="Combat")
+	TSubclassOf<UCameraShakeBase> DeathCameraShake;
+
 };
